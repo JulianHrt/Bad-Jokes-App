@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "../api/jokes";
+import { fetcher } from "../helpers/api";
 import styled from "styled-components";
 
 export default function JokeCard() {
@@ -22,10 +22,14 @@ export default function JokeCard() {
           return (
             <Styledli key={joke.id}>
               <p>{joke.text}</p>
-              <StylePAuthor>"{joke.author}"</StylePAuthor>
+              <StylePAuthor>{joke.author}</StylePAuthor>
               <StyledUlCategories>
                 {joke.categories.map((categorie) => {
-                  return <StyledliCategories>{categorie}</StyledliCategories>;
+                  return (
+                    <StyledliCategories key={joke.id}>
+                      {categorie}
+                    </StyledliCategories>
+                  );
                 })}
               </StyledUlCategories>
             </Styledli>
