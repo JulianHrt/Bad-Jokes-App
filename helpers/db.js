@@ -24,6 +24,29 @@ async function getAllJokes() {
   return jokes;
 }
 
+async function getJokeById(id) {
+  await connectWithMongoDB();
+
+  const joke = await Joke.findOne({ id }, { _id: false, __v: false });
+  return joke;
+}
+
+async function updateJokeById(id, joke) {
+  await connectWithMongoDB();
+
+  await Joke.updateOne({ id }, joke);
+  const updatedJoke = await getJokeById(id);
+  return updatedJoke;
+}
+
+async function deleteJokeById(id) {
+  await connectWithMongoDB();
+
+  const joke = await getJokeById(id);
+  await Joke.deleteOne({ id });
+  return joke;
+}
+
 async function createJoke(joke) {
   await connectWithMongoDB();
 
@@ -39,4 +62,4 @@ async function createJoke(joke) {
   };
 }
 
-export { getAllJokes, createJoke };
+export { getAllJokes, getJokeById, updateJokeById, createJoke, deleteJokeById };

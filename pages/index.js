@@ -25,6 +25,7 @@ const StyledLink = styled(Link)`
   border-radius: 10px;
   padding: 0.5em;
   text-align: center;
+  box-shadow: 0 0.5px 2px 1px grey;
 
   :hover {
     color: darkcyan;

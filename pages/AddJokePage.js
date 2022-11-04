@@ -9,7 +9,7 @@ export default function AddJokePage() {
   const [error, setError] = useState(false);
 
   async function sendJoke(joke) {
-    const newJoke = { ...joke, categories: joke.categories.split(" ") };
+    const newJoke = { ...joke, categories: joke.categories.split(",") };
 
     const response = await fetch("/api/jokes", {
       method: "POST",
@@ -45,6 +45,7 @@ const StyledLink = styled(Link)`
   border-radius: 10px;
   padding: 0.5em;
   text-align: center;
+  box-shadow: 0 0.5px 2px 1px grey;
 
   :hover {
     color: darkcyan;
