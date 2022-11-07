@@ -28,7 +28,7 @@ export default function JokeCard() {
               <StyledUlCategories>
                 {joke.categories.map((categorie) => {
                   return (
-                    <StyledliCategories key={joke.id}>
+                    <StyledliCategories key={joke.id + categorie}>
                       {categorie}
                     </StyledliCategories>
                   );
